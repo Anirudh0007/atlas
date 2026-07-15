@@ -1,5 +1,5 @@
 import asyncHandler from "../../common/utils/asyncHandler.js";
-import { createProduct } from "./product.service.js";
+import { createProduct, getAllProducts } from "./product.service.js";
 
 
 export const create=asyncHandler(async(req,res)=>{
@@ -7,5 +7,13 @@ export const create=asyncHandler(async(req,res)=>{
     res.status(201).json({
         success:true,
         data:product
+    })
+})
+
+export const getAll=asyncHandler(async(req,res)=>{
+    const products=await getAllProducts();
+    res.json({
+        success:true,
+        data:products
     })
 })
