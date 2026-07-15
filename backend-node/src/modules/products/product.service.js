@@ -18,3 +18,29 @@ export const getProductById=async(id)=>{
     }
     return product;
 }
+
+export const updateProduct=async(id, productData)=>{
+
+    const product=await Product.findByIdAndUpdate(
+        id,productData,
+        {
+            new:true,
+            runValidators:true
+        }
+    )
+    if(!product)
+    {
+        throw new Error("Product not found");
+    }
+    return product;
+}
+
+export const deleteProduct=async(id)=>{
+    const product=await Product.findByIdAndDelete(id);
+
+    if(!product)
+    {
+        throw new Error("Product not found");
+    }
+    return product;
+}

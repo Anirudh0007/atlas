@@ -1,5 +1,5 @@
 import asyncHandler from "../../common/utils/asyncHandler.js";
-import { createProduct, getAllProducts, getProductById } from "./product.service.js";
+import { createProduct, deleteProduct, getAllProducts, getProductById, updateProduct } from "./product.service.js";
 
 
 export const create=asyncHandler(async(req,res)=>{
@@ -23,5 +23,21 @@ export const getById=asyncHandler(async(req,res)=>{
     res.json({
         success:true,
         data:product
+    })
+})
+
+export const update=asyncHandler(async(req,res)=>{
+    const product=await updateProduct(req.params.id,req.body);
+    res.json({
+        success:true,
+        data:product
+    })
+})
+
+export const remove=asyncHandler(async(req,res)=>{
+    await deleteProduct(req.params.id);
+    res.json({
+        success:true,
+        message: 'Product deleted successfully'
     })
 })
