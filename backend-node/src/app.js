@@ -4,6 +4,8 @@ import authRoutes from './modules/auth/auth.routes.js';
 import authMiddleware from './common/middleware/auth.middleware.js';
 import errorHandler from './common/middleware/error.middleware.js';
 import productRouter from './modules/products/product.route.js';
+import cartRoutes from "./modules/cart/cart.routes.js";
+
 const app=express();
 
 app.use(cors());
@@ -27,6 +29,7 @@ app.get('/health', (req,res)=>{
 app.use('/api/v1/auth', authRoutes);
 app.use('/products', productRouter);
 app.use('/api/v1/products', productRouter);
+app.use('/api/v1/cart', cartRoutes);
 
 app.use(errorHandler);
 
