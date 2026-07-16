@@ -5,6 +5,7 @@ import authMiddleware from './common/middleware/auth.middleware.js';
 import errorHandler from './common/middleware/error.middleware.js';
 import productRouter from './modules/products/product.route.js';
 import cartRoutes from "./modules/cart/cart.routes.js";
+import orderRoutes from './modules/orders/order.route.js'
 
 const app=express();
 
@@ -30,6 +31,7 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/products', productRouter);
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/cart', cartRoutes);
+app.use('/ap1/v1/orders',orderRoutes);
 
 app.use(errorHandler);
 
